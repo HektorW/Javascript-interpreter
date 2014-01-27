@@ -17,6 +17,13 @@ class lexer:
     ordered = self.order(matched)
     return ordered;
 
+  def getToken(self, str):
+    pass
+
+  def getValue(self, str):
+    pass
+
+
   def tokenize(self, str):
     matches = {}
     for token in self._tokens:

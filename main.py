@@ -7,7 +7,7 @@ str = 'x=1+2;'
 l = lexer()
 
 l.addToken('IDENTIFIER', r'[A-z\_\$]+[A-z0-9\_\$]*')
-l.addToken('NUMBER', r'[0-9]+') # only integers
+l.addToken('NUMBER', r'(?:[0-9]+)') # only integers
 l.addToken('OPERATOR', r'[\+\*\-\/\=]')
 l.addToken('SEMICOLON', r';')
 
