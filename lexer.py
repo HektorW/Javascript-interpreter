@@ -17,11 +17,26 @@ class lexer:
     ordered = self.order(matched)
     return ordered;
 
-  def getToken(self, str):
-    pass
+  def getTokenType(self, str):
+    for token in self._tokens:
+      rgx = token['compiled']
+      if rgx.search(str):
+        return token['name']
+    return None
 
-  def getValue(self, str):
-    pass
+  def getToken(self, token_name):
+    for token in self._tokens:
+      if token['name'] == token_name:
+        return token
+    return None
+
+  def getTokenValue(self, str, token_name):
+    token = self.getToken(token_name)
+    if token:
+      match = token['compiled'].search(str)
+      if match:
+        return match.group(0)
+    return None
 
 
   def tokenize(self, str):
@@ -35,6 +50,7 @@ class lexer:
         obj['next'] = next(obj['iter'])
         obj['empty'] = False
       except StopIteration:
+        obj['next'] = None
         obj['empty'] = True
       matches[token['name']] = obj
     return matches
