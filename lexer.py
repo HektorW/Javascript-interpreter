@@ -1,5 +1,20 @@
 import re, sys
 
+# combine all token regex into one regex
+# using (rgx1)|(rgx2)
+# 
+# possibly name groups with token name
+#   (?P<name>)
+#   (?P&ltname&gt)
+#   
+# might need some order in how regexs are combined or if the rgx-parser is greedy so it picks as much as possible
+#   maybe not needed
+# 
+# regex need to be global?
+# if something isn't matched we have an unmatched token?
+#   how to check?
+#   last matched last index is not equal this match first index?
+
 class lexer:
   def __init__(self):
     self._tokens = []
